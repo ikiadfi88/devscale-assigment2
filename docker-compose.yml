@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16
+    container_name: hono-postgres
+    environment:
+      POSTGRES_USER: hono
+      POSTGRES_PASSWORD: hono
+      POSTGRES_DB: hono
+    ports:
+      - "55432:5432"
+    volumes:
+      - hono_prisma_db:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: hono-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - hono_prisma_redis:/data
+
+volumes:
+  hono_prisma_db:
+  hono_prisma_redis:

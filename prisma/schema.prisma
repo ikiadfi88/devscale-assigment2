@@ -1,0 +1,12 @@
+// use prisma-next
+
+model PipelineJob {
+  id        Int      @id @default(autoincrement())
+  jobId     String   @unique
+  status    String
+  input     String
+  result    String?
+  error     String?
+  createdAt temporal.createdAtString()
+  updatedAt temporal.updatedAtString()
+}
